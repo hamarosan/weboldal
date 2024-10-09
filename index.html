@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Csatorna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Alapbeállítások */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            color: #00E5FF;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Középre igazítás */
+            justify-content: center; /* Középre igazítás */
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Háttér animáció */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Háttér mögött */
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #FFFFFF; /* Fehér szín a csillagokhoz */
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Navigáció */
+        header {
+            position: absolute; /* Fix pozíció */
+            top: 20px; /* Felső margó */
+            right: 20px; /* Jobb margó */
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            color: #00E5FF;
+            font-weight: 700;
+            padding: 10px 20px;
+            border: 2px solid #00E5FF;
+            border-radius: 5px;
+            background-color: transparent;
+            transition: transform 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Kezdőlap */
+        #home {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Középre igazítás */
+            justify-content: center; /* Középre igazítás */
+            text-align: center;
+            margin-top: 20px; /* Megfelelő helyzet a logónak */
+        }
+
+        #logo {
+            max-width: 60%; /* Logó méretének csökkentése */
+            height: auto; /* Arányos magasság */
+        }
+
+        /* Tartalom dobozok */
+        .content {
+            display: none; /* Eltüntetve, amíg nem szükséges */
+            background-color: rgba(20, 20, 20, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            width: 90%;
+            max-width: 600px;
+            margin-top: 20px; /* Felső margó a dobozokhoz */
+            text-align: center; /* Szöveg középre igazítása */
+            border: 2px solid #00E5FF; /* Neon keret */
+            box-shadow: 0 0 10px #00E5FF, 0 0 20px #00E5FF, 0 0 30px #00E5FF; /* Neon hatás */
+        }
+
+        /* Rólam szekció */
+        #about {
+            display: none; /* Eltüntetve, amíg nem szükséges */
+        }
+
+        /* Setup szekció */
+        #setup {
+            display: none; /* Eltüntetve, amíg nem szükséges */
+        }
+
+        .setup-item {
+            color: #00E5FF; /* Egységes szín */
+            margin: 10px 0;
+        }
+
+        a {
+            color: #00E5FF; 
+            text-decoration: underline; /* Aláhúzott a kattinthatóság érdekében */
+        }
+
+        a:hover {
+            color: #fff; /* Kattintáskor a színváltozás */
+        }
+    </style>
+</head>
+<body>
+    <!-- Háttér animáció -->
+    <div class="background">
+        <div class="star" style="top: 10%; left: 20%; width: 5px; height: 5px; animation-delay: 0s;"></div>
+        <div class="star" style="top: 30%; left: 40%; width: 8px; height: 8px; animation-delay: 1s;"></div>
+        <div class="star" style="top: 50%; left: 60%; width: 4px; height: 4px; animation-delay: 0.5s;"></div>
+        <div class="star" style="top: 70%; left: 80%; width: 7px; height: 7px; animation-delay: 1.5s;"></div>
+        <div class="star" style="top: 20%; left: 70%; width: 6px; height: 6px; animation-delay: 0.8s;"></div>
+        <div class="star" style="top: 80%; left: 30%; width: 3px; height: 3px; animation-delay: 1.2s;"></div>
+        <!-- További csillagok -->
+    </div>
+
+    <!-- Navigáció -->
+    <header>
+        <a href="#" class="nav-button" onclick="showSection('home')">Kezdőlap</a>
+        <a href="#" class="nav-button" onclick="showSection('about')">Rólam</a>
+        <a href="#" class="nav-button" onclick="showSection('setup')">Setup</a>
+    </header>
+
+    <!-- Kezdőlap -->
+    <div id="home">
+        <img id="logo" src="logo1.png" alt="Logo"> <!-- Logo megjelenítése -->
+    </div>
+
+    <!-- Rólam szekció -->
+    <div id="about" class="content">
+        <h2 style="font-weight: 700; color: #00BFFF;">Rólam</h2> <!-- Kék szín a címhez -->
+        <p style="font-weight: 300; color: #e0e0e0;">
+            Balázs vagyok. A célom az, hogy egy nagyon jó közösséget tudhassak magaménak. Legfőképpen gaming és tech tartalmakat készítek. Már jó pár éve foglalkoztat ez az egész youtubeos tevékenység, de most jutottam el arra a szintre, hogy élvezhető videókat készítsek. Ha szeretnél a közösség tagja lenni, kattints <a href="https://www.youtube.com/@balazs799" target="_blank" style="color: #00BFFF; text-decoration: underline;">ide</a> a feliratkozásért! 
+        </p>
+    </div>
+
+    <!-- Setup szekció -->
+    <div id="setup" class="content">
+        <h2 style="font-weight: 700; color: #00BFFF;">Setup</h2> <!-- Egységes szín a címhez -->
+        <div class="setup-item"><b>Processzor:</b> I5 12400f</div>
+        <div class="setup-item"><b>Videókártya:</b> NVIDIA GeForce RTX 3060</div>
+        <div class="setup-item"><b>Memória:</b> G.skill aegis 2x8gb 3200mhz</div>
+        <div class="setup-item"><b>Tápegység:</b> Deepcool PF650</div>
+        <div class="setup-item"><b>Billentyűzet:</b> Redragon k552 rgb </div>
+        <div class="setup-item"><b>Egér:</b> Redragon nemeanlion 2 </div>
+        <div class="setup-item"><b>Mikrofon:</b> Fifine a6v </div>
+        <div class="setup-item"><b>Monitor:</b> LG UltraGear 24GQ50F</div>
+        <div class="setup-item"><b>Monitor:</b> Acer X192W</div>
+    </div>
+    
+    <!-- Szkript a szekciók közötti váltáshoz -->
+    <script>
+        const sections = ['home', 'about', 'setup'];
+
+        function showSection(sectionId) {
+            sections.forEach(sec => {
+                document.getElementById(sec).style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        showSection('home'); // Alapértelmezett szekció
+    </script>
+</body>
+</html>
